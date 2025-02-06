@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-time Character counter</title>
+  </head>
+  <body>
+    <h1>Message</h1>
+    <textarea id="Message" rows="5" cols="40" maxlength="200"></textarea>
+    <div id="counter">0/200</div>
+    <div id="warning" style="color: red; display: none">
+      you have reached the text limit !
+    </div>
+    <script>
+        // VARIABLE ELEMENTS
+      var messageInput = document.getElementById("Message");
+      var counterDisplay = document.getElementById("counter");
+      var warningMessage = document.getElementById("warning");
+      var maxLength = 200;
+      //INPUT EVENT
+
+      messageInput.addEventListener("input", function () {
+        var currentLength = messageInput.value.length;
+        counterDisplay.textContent = `${currentLength}/${maxLength}`;
+        // WARNING MESSAGE
+        if (currentLength >= maxLength) {
+          warningMessage.style.display = "block";
+        } else {
+          warningMessage.style.display = "none";
+        }
+      });
+      
+    </script>
+  </body>
+</html>
